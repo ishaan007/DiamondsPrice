@@ -1,0 +1,50 @@
+---
+title: "Diamonds and Price Prediction"
+author: "Rushil Agarwal & Ishaan Arora"
+date: "Monday, April 02, 2015"
+output: ioslides_presentation
+runtime: shiny
+---
+
+## All about it
+
+This R Markdown presentation is made interactive using Shiny. The viewers of the presentation can change the assumptions underlying what's presented and see the results immediately. 
+
+To learn more, see [Interactive Documents](http://rmarkdown.rstudio.com/authoring_shiny.html).
+
+## Scatterplot review
+
+```{r load data, echo=FALSE}
+library(ggplot2)
+data(diamonds)
+```
+
+```{r Scatterplot review, echo=FALSE, warning=FALSE}
+qplot(data = diamonds, x = carat, y = price,
+      xlim = c(0, quantile(diamonds$carat, 0.99)),
+      ylim = c(0, quantile(diamonds$price, 0.99)))+
+  geom_point(fill = I('#F79420'), color = I('black'), shape=21)
+```
+
+## Linear Model
+```{r Linear model, echo=FALSE, warning=FALSE}
+ggplot(data = diamonds, aes (x = carat, y = price))+
+  geom_point(color = '#F79420', alpha = 1/4)+
+  stat_smooth(method = 'lm') + 
+  scale_x_continuous(lim = c(0, quantile(diamonds$carat, 0.99))) +
+  scale_y_continuous(lim = c(0, quantile(diamonds$price, 0.99)))
+```
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Code and Output
+
+```{r}
+
+```
+
+
